@@ -3,7 +3,13 @@ const client = new Discord.Client();
 const token = 'MzA5NDEyOTczODI1MjI4ODAy.C-vCzA.B1a9PH-i2R3ANqj3mKr0T0uLH68';
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const redis = require('redis');
-const redisClient = redis.createClient();
+
+let options = {};
+if (process.env.REDIS_URL) {
+    options = { url: process.env.REDIS_URL };
+}
+
+const redisClient = redis.createClient(options);
 
 /**
  * Calculate a 32 bit FNV-1a hash
