@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.DISCORD_TOKEN;
+const redis = require('redis');
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
-const redis = require('redis');
 
 let options = {};
 if (process.env.REDIS_URL) {
@@ -46,7 +46,7 @@ client.on('message', message => {
 
         redisClient.get(hashedUrl, (err, reply) => {
             if (!reply) {
-                redisClient.set(hashedUrl, 'OC', 'EX', 10);
+                redisClient.set(hashedUrl, 'OC', 'EX', 43200);
             } else if (message.deletable) {
                 message.channel.send('NEIN! NEIN! NEIN! NO REPOST HERE!!!!');
                 message.delete();
