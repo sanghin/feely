@@ -1,0 +1,21 @@
+{
+  "name": "original-content-kitty",
+  "version": "0.0.1",
+  "description": "This kitten bot only likes OC",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sanghin"
+  ],
+  "author": "sanghin",
+  "license": "MIT",
+  "dependencies": {
+    "bufferutil": "^3.0.0",
+    "discord.js": "^11.1.0",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "redis": "^2.7.1",
+    "uws": "^0.14.5"
+  }
+}
