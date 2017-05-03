@@ -36,7 +36,7 @@ client.on('ready', () => {
 });
 
 redisClient.on('connect', () => {
-    console.log('REDIS OK')
+    console.log('REDIS OK');
 });
 
 client.on('message', message => {
@@ -47,7 +47,7 @@ client.on('message', message => {
             if (!reply) {
                 redisClient.set(hashedUrl, 'OC', 'EX', 10);
             } else if (message.deletable) {
-                message.channel.send(('NEIN! NEIN! NEIN! NO REPOST HERE!!!!'));
+                message.channel.send('NEIN! NEIN! NEIN! NO REPOST HERE!!!!');
                 message.delete();
             }
         });
