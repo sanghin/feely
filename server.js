@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = 'MzA5NDEyOTczODI1MjI4ODAy.C-vCzA.B1a9PH-i2R3ANqj3mKr0T0uLH68';
+const token = process.env.DISCORD_TOKEN;
+
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const redis = require('redis');
 
