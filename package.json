@@ -17,6 +17,7 @@
     "discord.js": "^11.1.0",
     "erlpack": "github:hammerandchisel/erlpack",
     "express": "^4.15.2",
+    "moment": "^2.18.1",
     "nodemon": "^1.11.0",
     "redis": "^2.7.1",
     "uws": "^0.14.5"
