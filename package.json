@@ -4,7 +4,8 @@
   "description": "This kitten bot only likes OC",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/.bin/nodemon server.js"
   },
   "keywords": [
     "sanghin"
@@ -16,6 +17,7 @@
     "discord.js": "^11.1.0",
     "erlpack": "github:hammerandchisel/erlpack",
     "express": "^4.15.2",
+    "nodemon": "^1.11.0",
     "redis": "^2.7.1",
     "uws": "^0.14.5"
   }
