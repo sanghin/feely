@@ -55,7 +55,7 @@ client.on('message', message => {
         const hashedUrl = hashURL(message.content, true).toString();
 
         redisClient.get(hashedUrl, (err, reply) => {
-            if (reply) {
+            if (!reply) {
                 redisClient.set(hashedUrl, 'OC', 'EX', 43200);
             } else if (message.deletable) {
                 message.channel.send('NEIN! NEIN! NEIN! NO REPOST HERE!');
