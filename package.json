@@ -15,6 +15,7 @@
     "bufferutil": "^3.0.0",
     "discord.js": "^11.1.0",
     "erlpack": "github:hammerandchisel/erlpack",
+    "express": "^4.15.2",
     "redis": "^2.7.1",
     "uws": "^0.14.5"
   }
