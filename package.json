@@ -10,7 +10,8 @@
   "keywords": [
     "sanghin"
   ],
-  "author": [ "sanghin", "ltribolet", "shaka", "barbietuerik" ],
+  "author": "sanghin",
+  "contributors": [ "ltribolet", "shaka", "barbietuerik" ],
   "license": "MIT",
   "dependencies": {
     "bufferutil": "^3.0.0",

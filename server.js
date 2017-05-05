@@ -4,14 +4,26 @@ const token = process.env.DISCORD_TOKEN;
 const redis = require('redis');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment');
+const express = require('express');
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const IS_AH_REGEX = /^ah/i;
 const IS_NESTCEPAS_REGEX = /^n'?estcepas$/ig;
 
+
+const app = express();
+const port = process.env.port || 7000;
+
 /*
  * SETUP SERVER
  */
+
+// Heroku will kill all process if no node server are up and running after 60 secs
+app.set('port', port);
+app.listen(app.get('port'), () => {
+    console.log('Node app up and running on '+app.get('port'))
+});
+
 let redisClientoptions = {};
 if (process.env.REDIS_URL) {
     redisClientoptions = { url: process.env.REDIS_URL };
