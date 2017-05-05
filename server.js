@@ -17,16 +17,6 @@ const port = process.env.port || 7000;
 /*
  * SETUP SERVER
  */
-
-// Heroku will kill all process if no node server are up and running after 60 secs
-app.set('port', port);
-
-app.get('/', () => {
-    response.send('Feely up and running.')
-}).listen(app.get('port'), () => {
-    console.log('Node app up and running on '+app.get('port'))
-});
-
 let redisClientoptions = {};
 if (process.env.REDIS_URL) {
     redisClientoptions = { url: process.env.REDIS_URL };
