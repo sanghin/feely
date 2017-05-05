@@ -6,7 +6,7 @@ const SHA256 = require('crypto-js/sha256');
 const moment = require('moment');
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
-const IS_AH_REGEX = /^ah$/i;
+const IS_AH_REGEX = /^ah/i;
 
 /*
  * SETUP SERVER
