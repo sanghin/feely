@@ -20,7 +20,10 @@ const port = process.env.port || 7000;
 
 // Heroku will kill all process if no node server are up and running after 60 secs
 app.set('port', port);
-app.listen(app.get('port'), () => {
+
+app.get('/', () => {
+    response.send('Feely up and running.')
+}).listen(app.get('port'), () => {
     console.log('Node app up and running on '+app.get('port'))
 });
 
