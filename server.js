@@ -7,6 +7,7 @@ const moment = require('moment');
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const IS_AH_REGEX = /^ah/i;
+const IS_NESTCEPAS_REGEX = /^n'?estcepas$/ig;
 
 /*
  * SETUP SERVER
@@ -55,6 +56,10 @@ client.on('message', message => {
 
     if (message.content.match(IS_AH_REGEX)) {
         message.channel.send('', {file: __dirname+'/static/img/ah.png'});
+    }
+
+    if (message.content.match(IS_NESTCEPAS_REGEX)) {
+        message.channel.send('', {file: __dirname+'/static/img/nestcepas.png'});
     }
 });
 
