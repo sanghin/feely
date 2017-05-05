@@ -1,7 +1,7 @@
 {
-  "name": "original-content-kitty",
+  "name": "feely",
   "version": "0.0.1",
-  "description": "This kitten bot only likes OC",
+  "description": "SOSH discord bot",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   "keywords": [
     "sanghin"
   ],
-  "author": "sanghin",
+  "author": [ "sanghin", "ltribolet", "shaka", "barbietuerik" ],
   "license": "MIT",
   "dependencies": {
     "bufferutil": "^3.0.0",
