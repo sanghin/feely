@@ -70,4 +70,15 @@ client.on('message', message => {
     }
 });
 
+client.on('messageDelete', message => {
+    if (message.content.match(IS_URL_REGEX)) {
+        const hashedUrl = SHA256(message.content).toString();
+        redisClient.get(hashedUrl, (err, reply) => {
+            if (reply) {
+                redisClient.del(hashedUrl);
+            }
+        });
+    }
+});
+
 client.login(token);
