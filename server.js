@@ -2,10 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.DISCORD_TOKEN;
 const redis = require('redis');
-const express = require('express');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment');
-const app = express();
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const IS_AH_REGEX = /^ah$/i;
@@ -19,16 +17,6 @@ if (process.env.REDIS_URL) {
 }
 
 const redisClient = redis.createClient(redisClientoptions);
-
-app.set('port', (process.env.PORT || 7000));
-app.use(express.static(__dirname + '/static'));
-app.get('/', (request, response) => {
-    response.sendFile(Path.join(__dirname, 'index.html'));
-});
-
-app.listen(app.get('port'), () => {
-    console.log('Node app is running on port', app.get('port'));
-});
 
 client.on('ready', () => {
     console.log('DISCORD OK');
