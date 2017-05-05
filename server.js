@@ -58,7 +58,7 @@ client.on('message', message => {
         message.channel.send('', {file: __dirname+'/static/img/ah.png'});
     }
 
-    if (message.content.match(IS_NESTCEPAS_REGEX)) {
+    if (message.content.replace(/\s/g,'').match(IS_NESTCEPAS_REGEX)) {
         message.channel.send('', {file: __dirname+'/static/img/nestcepas.gif'});
     }
 });
