@@ -32,7 +32,7 @@ Port might change depending on what you setup for your environment.
 To find out you can do `redis-cli` in your terminal to find out:
 ```
 $ redis-cli
-127.0.0.1:3679>
+127.0.0.1:3679
 ```
 
 Which will gives you host and port.
