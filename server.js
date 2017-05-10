@@ -63,7 +63,7 @@ client.on('message', message => {
         message.channel.send('', {file: __dirname+'/static/img/nestcepas.gif'});
     }
 
-    if (message.content === 'f!s killer') {
+    /*if (message.content === 'f!s killer') {
         const channel = message.member.voiceChannel;
 
         channel.join()
@@ -75,7 +75,7 @@ client.on('message', message => {
             })
             .catch(console.error)
         ;
-    }
+    }*/
 });
 
 client.on('messageDelete', message => {
