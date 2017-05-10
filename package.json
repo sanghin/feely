@@ -11,7 +11,11 @@
     "sanghin"
   ],
   "author": "sanghin",
-  "contributors": [ "ltribolet", "shaka", "barbietuerik" ],
+  "contributors": [
+    "ltribolet",
+    "shaka",
+    "barbietuerik"
+  ],
   "license": "MIT",
   "dependencies": {
     "bufferutil": "^3.0.0",
@@ -19,9 +23,14 @@
     "discord.js": "^11.1.0",
     "erlpack": "github:hammerandchisel/erlpack",
     "express": "^4.15.2",
+    "ffmpeg": "0.0.4",
+    "libsodium-wrappers": "^0.5.1",
     "moment": "^2.18.1",
+    "node-opus": "^0.2.6",
     "nodemon": "^1.11.0",
+    "opusscript": "0.0.3",
     "redis": "^2.7.1",
+    "sodium": "^2.0.1",
     "uws": "^0.14.5"
   }
 }

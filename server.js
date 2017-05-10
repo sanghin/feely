@@ -5,14 +5,11 @@ const redis = require('redis');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment');
 const express = require('express');
+const broadcast = client.createVoiceBroadcast();
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const IS_AH_REGEX = /^\bah\b/i;
 const IS_NESTCEPAS_REGEX = /^n'?estcepas$/ig;
-
-
-const app = express();
-const port = process.env.port || 7000;
 
 /*
  * SETUP SERVER
@@ -31,7 +28,6 @@ client.on('ready', () => {
 redisClient.on('connect', () => {
     console.log('REDIS OK');
 });
-
 
 /*
  * REAL MAGIC HAPPENS
@@ -65,6 +61,20 @@ client.on('message', message => {
 
     if (message.content.replace(/\s/g,'').match(IS_NESTCEPAS_REGEX)) {
         message.channel.send('', {file: __dirname+'/static/img/nestcepas.gif'});
+    }
+
+    if (message.content === 'f!s killer') {
+        const channel = message.member.voiceChannel;
+
+        channel.join()
+            .then((connection) => {
+                connection.playFile(__dirname+'/soundbox/killer.mp3');
+            })
+            .then(dispatcher => {
+                console.log(dispatcher)
+            })
+            .catch(console.error)
+        ;
     }
 });
 
