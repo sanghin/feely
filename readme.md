@@ -6,6 +6,7 @@ This is a little bot for Discord.
 
 - Detect links submitted more than once in the past 12 hours and replace it if posted again by an image
 - Detect the usage of the famous ["ah"](https://www.youtube.com/watch?v=XE6YaLtctcI)
+- Detect the usage of the famous "N'est ce pas"
 
 ### Local development setup
 
