@@ -11,7 +11,11 @@
     "sanghin"
   ],
   "author": "sanghin",
-  "contributors": [ "ltribolet", "shaka", "barbietuerik" ],
+  "contributors": [
+    "ltribolet",
+    "shaka",
+    "barbietuerik"
+  ],
   "license": "MIT",
   "dependencies": {
     "bufferutil": "^3.0.0",

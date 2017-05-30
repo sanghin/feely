@@ -7,12 +7,8 @@ const moment = require('moment');
 const express = require('express');
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
-const IS_AH_REGEX = /^\bah\b/i;
+const IS_AH_REGEX = /^\bah\b$/i;
 const IS_NESTCEPAS_REGEX = /^n'?estcepas$/ig;
-
-
-const app = express();
-const port = process.env.port || 7000;
 
 /*
  * SETUP SERVER
@@ -31,7 +27,6 @@ client.on('ready', () => {
 redisClient.on('connect', () => {
     console.log('REDIS OK');
 });
-
 
 /*
  * REAL MAGIC HAPPENS
