@@ -61,20 +61,6 @@ client.on('message', message => {
     if (message.content.replace(/\s/g,'').match(IS_NESTCEPAS_REGEX)) {
         message.channel.send('', {file: __dirname+'/static/img/nestcepas.gif'});
     }
-
-    /*if (message.content === 'f!s killer') {
-        const channel = message.member.voiceChannel;
-
-        channel.join()
-            .then((connection) => {
-                connection.playFile(__dirname+'/soundbox/killer.mp3');
-            })
-            .then(dispatcher => {
-                console.log(dispatcher)
-            })
-            .catch(console.error)
-        ;
-    }*/
 });
 
 client.on('messageDelete', message => {
