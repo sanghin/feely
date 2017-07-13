@@ -10,6 +10,9 @@
   "keywords": [
     "sanghin"
   ],
+  "engines": {
+    "node": "6.11.1"
+  },
   "author": "sanghin",
   "contributors": [
     "ltribolet",
