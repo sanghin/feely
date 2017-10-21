@@ -11,6 +11,7 @@ const TWELVE_HOURS = 43200;
 
 const IS_URL_REGEX = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
 const IS_AH_REGEX = /^\bah\b$/i;
+const IS_PROJET_REGEX = /^\bprojet\b$/i;
 const IS_NESTCEPAS_REGEX = /^n'?estcepas$/gi;
 const IS_GET_VANCOUVER_TIME_REGEX = /!vanc/;
 const IS_GET_PARIS_TIME_REGEX = /!par/;
@@ -74,20 +75,24 @@ client.on('message', (message) => {
     message.channel.send('', { file: `${__dirname}/static/img/nestcepas.gif` });
   }
 
+  if (message.content.replace(/\s/g, '').match(IS_PROJET_REGEX)) {
+    message.channel.send('', { file: `${__dirname}/static/img/projet.gif` });
+  }
+
   if (message.content.match(IS_GET_VANCOUVER_TIME_REGEX)) {
     const vancouverDateTime = moment()
       .tz('America/Vancouver')
       .locale('fr')
-      .format('LTS');
-    message.channel.send(`${vancouverDateTime}`);
+      .format('LT');
+    message.channel.send(`:maple_leaf: ${vancouverDateTime} :flag_ca:`);
   }
 
   if (message.content.match(IS_GET_PARIS_TIME_REGEX)) {
     const parisDateTime = moment()
       .tz('Europe/Paris')
       .locale('fr')
-      .format('LTS');
-    message.channel.send(`${parisDateTime}`);
+      .format('LT');
+    message.channel.send(`:flag_fr: ${parisDateTime} :french_bread:`);
   }
 });
 
