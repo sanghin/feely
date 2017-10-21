@@ -5,17 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node_modules/.bin/nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "sanghin"
   ],
-  "engines": {
-    "node": "6.11.1"
-  },
   "author": "sanghin",
   "contributors": [
-    "ltribolet",
+    "m3galo",
     "shaka",
     "barbietuerik"
   ],
@@ -24,6 +22,7 @@
     "bufferutil": "^3.0.0",
     "crypto-js": "^3.1.9-1",
     "discord.js": "^11.1.0",
+    "dotenv": "^4.0.0",
     "erlpack": "github:hammerandchisel/erlpack",
     "express": "^4.15.2",
     "moment": "^2.18.1",

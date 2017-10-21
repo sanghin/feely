@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.DISCORD_TOKEN;
@@ -31,7 +33,6 @@ redisClient.on('connect', () => {
 /*
  * REAL MAGIC HAPPENS
  */
-
 client.on('message', message => {
     if (message.content.match(IS_URL_REGEX)) {
         const hashedUrl = SHA256(message.content).toString();
