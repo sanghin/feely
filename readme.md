@@ -10,6 +10,20 @@ This is a little bot for Discord.
 
 ### Local development setup
 
+- (install Docker)[https://docs.docker.com/engine/installation/]
+- clone the repo.
+- setup environment variable:
+```
+export DISCORD_TOKEN=%discordToken%
+export REDIS_URL=redis://redis:3679
+```
+
+- run the containers:
+```
+$ docker-compose build && docker-compose up
+```
+
+### 17 century setup
 Install Redis (https://redis.io/)
 
 Clone and install project dependencies:
@@ -24,8 +38,8 @@ Setup environment variable:
 
 ```
 export DISCORD_TOKEN=%discordToken%
-export REDIS_URL=redis://h:localhost:3679
-export PORT=8000
+export REDIS_URL=redis://localhost:6379
+export PORT=3000
 ```
 
 Port might change depending on what you setup for your environment.
