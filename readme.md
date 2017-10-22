@@ -10,7 +10,7 @@ This is a little bot for Discord.
 
 ### Local development setup
 
-- (install Docker)[https://docs.docker.com/engine/installation/]
+- [install Docker](https://docs.docker.com/engine/installation/)
 - clone the repo.
 - setup environment variable:
 ```
