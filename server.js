@@ -1,15 +1,15 @@
-require('dotenv').config();
-
 const Discord = require('discord.js');
 const redis = require('redis');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment-timezone');
 
+const PATH_TO_STATIC_FOLDER = `${__dirname}/static/img/`;
+const { DISCORD_TOKEN = null, REDIS_URL = 'redis://redis:6379' } = process.env;
 const client = new Discord.Client();
-const token = process.env.DISCORD_TOKEN;
+const token = DISCORD_TOKEN;
 const TWELVE_HOURS = 43200;
 
-const IS_URL_REGEX = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
 const IS_AH_REGEX = /^\bah\b$/i;
 const IS_PROJET_REGEX = /^\bprojet\b$/i;
 const IS_NESTCEPAS_REGEX = /^n'?estcepas$/gi;
@@ -19,11 +19,7 @@ const IS_GET_PARIS_TIME_REGEX = /!par/;
 /*
  * SETUP SERVER
  */
-let redisClientoptions = {};
-if (process.env.REDIS_URL) {
-  redisClientoptions = { url: process.env.REDIS_URL };
-}
-
+const redisClientoptions = REDIS_URL ? { url: REDIS_URL } : {};
 const redisClient = redis.createClient(redisClientoptions);
 
 client.on('ready', () => {
@@ -60,7 +56,7 @@ client.on('message', (message) => {
         const blameMessage =
           `${data.user} posted this in #${data.channel} on ${date.fromNow()}` || '';
         message.channel.send(blameMessage, {
-          file: `${__dirname}/static/img/no_repost.jpg`,
+          file: `${PATH_TO_STATIC_FOLDER}/no_repost.jpg`,
         });
         message.delete();
       }
@@ -68,15 +64,15 @@ client.on('message', (message) => {
   }
 
   if (message.content.match(IS_AH_REGEX)) {
-    message.channel.send('', { file: `${__dirname}/static/img/ah.png` });
+    message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/ah.png` });
   }
 
   if (message.content.replace(/\s/g, '').match(IS_NESTCEPAS_REGEX)) {
-    message.channel.send('', { file: `${__dirname}/static/img/nestcepas.gif` });
+    message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/nestcepas.gif` });
   }
 
   if (message.content.replace(/\s/g, '').match(IS_PROJET_REGEX)) {
-    message.channel.send('', { file: `${__dirname}/static/img/projet.gif` });
+    message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/projet.gif` });
   }
 
   if (message.content.match(IS_GET_VANCOUVER_TIME_REGEX)) {
@@ -84,7 +80,7 @@ client.on('message', (message) => {
       .tz('America/Vancouver')
       .locale('fr')
       .format('LT');
-    message.channel.send(`:maple_leaf: ${vancouverDateTime} :flag_ca:`);
+    message.channel.send(`:flag_ca: ${vancouverDateTime} :maple_leaf:`);
   }
 
   if (message.content.match(IS_GET_PARIS_TIME_REGEX)) {
