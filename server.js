@@ -1,12 +1,12 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const redis = require('redis');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment-timezone');
 
 const PATH_TO_STATIC_FOLDER = `${__dirname}/static/img/`;
-const { DISCORD_TOKEN = null, REDIS_URL = 'redis://redis:6379' } = process.env;
+const { DISCORD_TOKEN, REDIS_URL } = process.env;
 const client = new Discord.Client();
-const token = DISCORD_TOKEN;
 const TWELVE_HOURS = 43200;
 
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
@@ -15,6 +15,7 @@ const IS_PROJET_REGEX = /^\bprojet\b$/i;
 const IS_NESTCEPAS_REGEX = /^n'?estcepas$/gi;
 const IS_GET_VANCOUVER_TIME_REGEX = /!vanc/;
 const IS_GET_PARIS_TIME_REGEX = /!par/;
+const IS_FAKE_NEWS_REGEX = /^fake((\s)?news)?$/gi;
 
 /*
  * SETUP SERVER
@@ -53,8 +54,7 @@ client.on('message', (message) => {
         // and blame the user with a custom blame message
         const data = JSON.parse(reply);
         const date = moment(new Date(data.date));
-        const blameMessage =
-          `${data.user} posted this in #${data.channel} on ${date.fromNow()}` || '';
+        const blameMessage = `${data.user} posted this in #${data.channel} on ${date.fromNow()}`;
         message.channel.send(blameMessage, {
           file: `${PATH_TO_STATIC_FOLDER}/no_repost.jpg`,
         });
@@ -69,6 +69,12 @@ client.on('message', (message) => {
 
   if (message.content.replace(/\s/g, '').match(IS_NESTCEPAS_REGEX)) {
     message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/nestcepas.gif` });
+  }
+
+  if (message.content.match(IS_FAKE_NEWS_REGEX)) {
+    // will select randomly between fakenews_1.jpg and fakenews_2.jpg
+    const image = ['fakenews_1', 'fakenews_2'][Math.round(Math.random())];
+    message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/${image}.jpg` });
   }
 
   if (message.content.replace(/\s/g, '').match(IS_PROJET_REGEX)) {
@@ -103,4 +109,4 @@ client.on('messageDelete', (message) => {
   }
 });
 
-client.login(token);
+client.login(DISCORD_TOKEN);
