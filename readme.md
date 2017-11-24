@@ -20,7 +20,7 @@ export REDIS_URL=redis://redis:3679
 
 - run the containers:
 ```
-$ docker-compose build && docker-compose up
+$ docker-compose up --build
 ```
 
 ### 17 century setup
