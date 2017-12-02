@@ -25,18 +25,21 @@ const redisClientoptions = REDIS_URL ? { url: REDIS_URL } : {};
 const redisClient = redis.createClient(redisClientoptions);
 
 client.on('ready', () => {
+  // eslint-disable-next-line no-console
   console.log('DISCORD OK');
 });
 
 redisClient.on('connect', () => {
+  // eslint-disable-next-line no-console
   console.log('REDIS OK');
 });
 
 const helpMessage = new Discord.RichEmbed({
-  description: 'Feely can look for link double posted and will let you know. Also there are all those useful command from Feely :',
+  description:
+    'Feely can look for link double posted and will let you know. Also there are all those useful command from Feely :',
   timestamp: new Date(),
   color: 16777215,
-  thumbnail: { file: `${PATH_TO_STATIC_FOLDER}/oh_hai.gif` },
+  thumbnail: { file: `${PATH_TO_STATIC_FOLDER}/oh_hai.jpg` },
   fields: [
     {
       name: 'ah',
