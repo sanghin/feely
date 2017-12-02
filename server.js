@@ -9,7 +9,7 @@ const { DISCORD_TOKEN, REDIS_URL } = process.env;
 const client = new Discord.Client();
 const TWELVE_HOURS = 43200;
 
-const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/;
+const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 const IS_AH_REGEX = /^\bah\b$/i;
 const IS_PROJET_REGEX = /^\bprojet\b$/i;
 const IS_NESTCEPAS_REGEX = /^n'?est(\s|-)?ce\s?pas\s\??$/gi;
@@ -52,11 +52,11 @@ const helpMessage = new Discord.RichEmbed({
     },
     {
       name: 'fake news',
-      value: 'You don\'t want to spread false news, do you ?',
+      value: "You don't want to spread false news, do you ?",
     },
     {
-      name: 'n\'est-ce pas ?',
-      value: 'You need the ol\' racist uncle card ? Don\'t move !',
+      name: "n'est-ce pas ?",
+      value: "You need the ol' racist uncle card ? Don't move !",
     },
   ],
 });
@@ -85,7 +85,7 @@ client.on('message', (message) => {
         redisClient.set(hashedUrl, JSON.stringify(data), 'EX', TWELVE_HOURS);
       } else if (message.deletable) {
         // IT'S A REPOST :SCREAM:
-        // delete the message, post the repost PNG
+        // delete the message, send the repost PNG
         // and blame the user with a custom blame message
         const data = JSON.parse(reply);
         const date = moment(new Date(data.date));
@@ -150,6 +150,6 @@ client.on('messageDelete', (message) => {
   }
 });
 
-client.login(DISCORD_TOKEN).then((data) => {
+client.login(DISCORD_TOKEN).then(() => {
   helpMessage.setFooter('Enjoy !', client.user.avatarURL);
 });
