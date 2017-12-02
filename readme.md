@@ -17,6 +17,7 @@ This is a little bot for Discord.
 export DISCORD_TOKEN=%discordToken%
 export REDIS_URL=redis://redis:3679
 ```
+- Chose the right Dockerfile. If your are running on Dockertools chose `Dockerfile-tools` otherwise `Dockerfile-native`.
 
 - run the containers:
 ```
