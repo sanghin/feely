@@ -16,7 +16,7 @@ const IS_NESTCEPAS_REGEX = /^n'?est(\s|-)?ce\s?pas(\s\?)?$/gi;
 const IS_GET_VANCOUVER_TIME_REGEX = /!vanc/;
 const IS_GET_PARIS_TIME_REGEX = /!par/;
 const IS_FAKE_NEWS_REGEX = /^fake((\s)?news)?$/gi;
-const IS_FEELY_INVOKED = /^!feely$/;
+const IS_FEELY_INVOKED = /^!f(eely)?$/;
 
 /*
  * SETUP SERVER
