@@ -34,35 +34,17 @@ redisClient.on('connect', () => {
   console.log('REDIS OK');
 });
 
-const helpMessage = new Discord.RichEmbed({
-  description:
-    'Feely can look for link double posted and will let you know. Also there are all those useful command from Feely :',
-  timestamp: new Date(),
-  color: 16777215,
-  thumbnail: { file: `${PATH_TO_STATIC_FOLDER}/oh_hai.jpg` },
-  fields: [
-    {
-      name: 'ah',
-      value: 'Invoke Denis',
-    },
-    {
-      name: 'projet',
-      value: 'Invoke our dear Président.',
-    },
-    {
-      name: '!par and !vanc',
-      value: 'Wanna know what time is it in Paris or Vancouver ?',
-    },
-    {
-      name: 'fake news',
-      value: "You don't want to spread false news, do you ?",
-    },
-    {
-      name: "n'est-ce pas ?",
-      value: "You need the ol' racist uncle card ? Don't move !",
-    },
-  ],
-});
+const helpMessage = new Discord.RichEmbed()
+  .setAuthor('Feely')
+  .setDescription('Feely can look for link double posted and will let you know. Also there are all those useful command from Feely :')
+  .setTimestamp(new Date())
+  .setThumbnail('https://imgur.com/a/3KOMb')
+  .setColor(16777215)
+  .addField('ah', 'Invoke Denis')
+  .addField('projet', 'Invoke our dear Président.')
+  .addField('!par and !vanc', 'Wanna know what time is it in Paris or Vancouver ?')
+  .addField('fake news', "You don't want to spread false news, do you ?")
+  .addField("n'est-ce pas ?", "You need the ol' racist uncle card ? Don't move !");
 
 /*
  * REAL MAGIC HAPPENS
