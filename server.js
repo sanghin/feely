@@ -12,7 +12,7 @@ const TWELVE_HOURS = 43200;
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 const IS_AH_REGEX = /^\bah\b$/i;
 const IS_PROJET_REGEX = /^\bprojet\b$/i;
-const IS_NESTCEPAS_REGEX = /^n'?est(\s|-)?ce\s?pas\s\??$/gi;
+const IS_NESTCEPAS_REGEX = /^n'?est(\s|-)?ce\s?pas(\s\?)?$/gi;
 const IS_GET_VANCOUVER_TIME_REGEX = /!vanc/;
 const IS_GET_PARIS_TIME_REGEX = /!par/;
 const IS_FAKE_NEWS_REGEX = /^fake((\s)?news)?$/gi;
