@@ -9,7 +9,8 @@ services:
   feely:
     build: .
     volumes:
-      - "./:/usr/src/app"
+      - "./app:/usr/src/feely/app"
+      - "./static:/usr/src/feely/static"
     ports:
       - 4000:3000
     links:

@@ -7,17 +7,20 @@ This is a little bot for Discord.
 - Detect links submitted more than once in the past 12 hours and replace it if posted again by an image
 - Detect the usage of the famous ["ah"](https://www.youtube.com/watch?v=XE6YaLtctcI)
 - Detect the usage of the famous "N'est ce pas"
+- And many more
 
 ### Local development setup
 
 - [install Docker](https://docs.docker.com/engine/installation/)
 - clone the repo.
-- setup environment variable:
+- setup environment variable `.env` file :
 ```
-export DISCORD_TOKEN=%discordToken%
-export REDIS_URL=redis://redis:3679
+$ cp .env-example .env
 ```
-- Chose the right Dockerfile. If your are running on Dockertools chose `Dockerfile-tools` otherwise `Dockerfile-native`.
+```
+DISCORD_TOKEN=%discordToken%
+REDIS_URL=redis://redis:3679
+```
 
 - run the containers:
 ```
