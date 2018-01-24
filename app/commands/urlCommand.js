@@ -1,10 +1,10 @@
 const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
 const urlCommand = {
-  supports: function (input) {
+  supports(input) {
     return input.content.match(IS_URL_REGEX) !== false;
   },
-  process: function (input) {
+  process(input) {
     const hashedUrl = SHA256(input.content).toString();
 
     redisClient.get(hashedUrl, (err, reply) => {
@@ -32,7 +32,7 @@ const urlCommand = {
         input.delete();
       }
     });
-  }
+  },
 };
 
 module.exports = urlCommand;
