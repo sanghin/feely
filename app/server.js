@@ -3,6 +3,9 @@ const Discord = require('discord.js');
 const redis = require('redis');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment-timezone');
+const commands = require('./commands');
+
+commands.load(`${__dirname}/commands/`);
 
 const PATH_TO_STATIC_FOLDER = `${__dirname}/../static/img/`;
 const {DISCORD_TOKEN, REDIS_URL} = process.env;
@@ -119,6 +122,8 @@ client.on('message', (message) => {
   if (message.author.bot) {
     return false;
   }
+
+  commands.handle(message);
 
   if (message.content.match(IS_URL_REGEX)) {
     duplicatedLinkDetection(message);
