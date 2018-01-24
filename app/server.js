@@ -51,7 +51,7 @@ const helpMessage = new Discord.RichEmbed()
   .addField('so good|feels good', 'Feels good man !')
   .addField("n'est-ce pas ?", "You need the ol' racist uncle card ? Don't move !");
 
-function duplicatedLinkDetection(message) {
+const duplicatedLinkDetection = (message) => {
   const hashedUrl = SHA256(message.content).toString();
 
   redisClient.get(hashedUrl, (err, reply) => {
@@ -79,53 +79,37 @@ function duplicatedLinkDetection(message) {
       message.delete();
     }
   });
-}
+};
 
-function invokeDenis(message) {
-  message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/ah.png`});
-}
 
-function invokeJML(message) {
-  message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/nestcepas.gif`});
-}
+const getHelpCommand = (message) => message.channel.send(helpMessage);
+const invokeTealc = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/indeed.gif`});
+const invokeGoodMan = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/so_good.png`});
+const invokeDenis = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/ah.png`});
+const invokeJML = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/nestcepas.gif`});
+const invokeJupiter = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/projet.gif`});
 
-function invokeTheDonald(message) {
+const invokeTheDonald = (message) => {
 // will select randomly between fakenews_1.jpg and fakenews_2.jpg
   const image = ['fakenews_1', 'fakenews_2'][Math.round(Math.random())];
   message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/${image}.jpg`});
-}
+};
 
-function invokeJupiter(message) {
-  message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/projet.gif`});
-}
-
-function getVancouverTime(message) {
+const getVancouverTime = (message) => {
   const vancouverDateTime = moment()
     .tz('America/Vancouver')
     .locale('fr')
     .format('LT');
   message.channel.send(`:flag_ca: ${vancouverDateTime} :maple_leaf:`);
-}
+};
 
-function avoirHeureParis(message) {
+const avoirHeureParis = (message) => {
   const parisDateTime = moment()
     .tz('Europe/Paris')
     .locale('fr')
     .format('LT');
   message.channel.send(`:flag_fr: ${parisDateTime} :french_bread:`);
-}
-
-function getHelpCommand(message) {
-  message.channel.send(helpMessage);
-}
-
-function invokeTealc(message) {
-  message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/indeed.gif`});
-}
-
-function invokeGoodMan(message) {
-  message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/so_good.png`});
-}
+};
 
 /*
  * REAL MAGIC HAPPENS
