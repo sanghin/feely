@@ -2,5 +2,5 @@
   "eslint.packageManager": "yarn",
   "eslint.alwaysShowStatus": true,
   "prettier.eslintIntegration": true,
-  "flow.enabled": false
+  "editor.formatOnSave": true
 }
