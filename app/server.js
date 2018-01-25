@@ -3,12 +3,12 @@ const Discord = require('discord.js');
 const redis = require('redis');
 const SHA256 = require('crypto-js/sha256');
 const moment = require('moment-timezone');
-const commands = require('./commands');
+const { command } = require('./commands');
 
-commands.load(`${__dirname}/commands/`);
+console.log(command.commands);
 
 const PATH_TO_STATIC_FOLDER = `${__dirname}/../static/img/`;
-const {DISCORD_TOKEN, REDIS_URL} = process.env;
+const { DISCORD_TOKEN, REDIS_URL } = process.env;
 const client = new Discord.Client();
 const TWELVE_HOURS = 43200;
 
@@ -27,7 +27,7 @@ const IS_FEELY_INVOKED = /^!f(eely)?$/;
 /*
  * SETUP SERVER
  */
-const redisClientoptions = REDIS_URL ? {url: REDIS_URL} : {};
+const redisClientoptions = REDIS_URL ? { url: REDIS_URL } : {};
 const redisClient = redis.createClient(redisClientoptions);
 
 client.on('ready', () => {
@@ -84,18 +84,17 @@ const duplicatedLinkDetection = (message) => {
   });
 };
 
-
-const getHelpCommand = (message) => message.channel.send(helpMessage);
-const invokeTealc = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/indeed.gif`});
-const invokeGoodMan = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/so_good.png`});
-const invokeDenis = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/ah.png`});
-const invokeJML = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/nestcepas.gif`});
-const invokeJupiter = (message) => message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/projet.gif`});
+const getHelpCommand = message => message.channel.send(helpMessage);
+const invokeTealc = message => message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/indeed.gif` });
+const invokeGoodMan = message => message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/so_good.png` });
+const invokeDenis = message => message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/ah.png` });
+const invokeJML = message => message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/nestcepas.gif` });
+const invokeJupiter = message => message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/projet.gif` });
 
 const invokeTheDonald = (message) => {
-// will select randomly between fakenews_1.jpg and fakenews_2.jpg
+  // will select randomly between fakenews_1.jpg and fakenews_2.jpg
   const image = ['fakenews_1', 'fakenews_2'][Math.round(Math.random())];
-  message.channel.send('', {file: `${PATH_TO_STATIC_FOLDER}/${image}.jpg`});
+  message.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/${image}.jpg` });
 };
 
 const getVancouverTime = (message) => {
@@ -120,10 +119,8 @@ const avoirHeureParis = (message) => {
 client.on('message', (message) => {
   // do not need to react to somebody not alive, right ?
   if (message.author.bot) {
-    return false;
+    return;
   }
-
-  commands.handle(message);
 
   if (message.content.match(IS_URL_REGEX)) {
     duplicatedLinkDetection(message);
@@ -163,13 +160,11 @@ client.on('message', (message) => {
   if (message.content.match(IS_SO_GOOD_REGEX) || message.content.match(IS_FEELS_GOOD_REGEX)) {
     invokeGoodMan(message);
   }
-
-  return true;
 });
 
 client.on('messageDelete', (message) => {
   if (!message.content.match(IS_URL_REGEX)) {
-    return true;
+    return;
   }
 
   const hashedUrl = SHA256(message.content).toString();

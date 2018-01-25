@@ -1,26 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 
-const Commands = {
-  commands: [],
-  addCommand: function (command) {
-    Commands.commands.push(command);
-  },
-  handle: function (input) {
-    const availableCommands = this.commands
-      .filter(function (command) {
-        return command.supports(input);
-      });
+const PATH_TO_COMMAND_FOLDER = `${__dirname}/commands`;
+
+class Command {
+  constructor() {
+    this.commands = [];
+    this.load();
+  }
+
+  addCommand(command) {
+    this.commands.push(command);
+  }
+
+  handle(input) {
+    const availableCommands = this.commands.filter(command => command.supports(input));
 
     return availableCommands[0].process();
-  },
-  load: function (dir) {
-    const files = fs.readdirSync(dir);
-    files.forEach(function (file) {
-      Commands.addCommand(require(path.join(dir, file)));
+  }
 
+  load() {
+    const files = fs.readdirSync(PATH_TO_COMMAND_FOLDER);
+    files.forEach((file) => {
+      this.addCommand(require(path.join(PATH_TO_COMMAND_FOLDER, file)));
     });
   }
-};
+}
 
-module.exports = Commands;
+const command = new Command();
+module.exports = { command };
