@@ -1,13 +1,17 @@
-const IS_URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
+const redisClient = require('../store/redisClient');
+const {PATH_TO_STATIC_FOLDER, TWELVE_HOURS, IS_URL_REGEX} = require('../utility/const');
+const moment = require('moment');
+const SHA256 = require('crypto-js/sha256');
 
-const urlCommand = {
-  supports(input) {
-    return input.content.match(IS_URL_REGEX) !== false;
+const repostCommand = {
+  supports(input, context) {
+    return input.content.match(IS_URL_REGEX) !== null && context === 'post';
   },
   process(input) {
     const hashedUrl = SHA256(input.content).toString();
 
     redisClient.get(hashedUrl, (err, reply) => {
+      console.log(err, reply);
       if (!reply) {
         // link is fresh or at least 12 hours old
         // save the hash and links meta in redis for 12 hours
@@ -15,6 +19,7 @@ const urlCommand = {
           user: input.author.username,
           channel: input.channel.name,
           date: input.createdAt,
+          id: input.id
         };
         redisClient.set(hashedUrl, JSON.stringify(data), 'EX', TWELVE_HOURS);
       }
@@ -35,4 +40,4 @@ const urlCommand = {
   },
 };
 
-module.exports = urlCommand;
+module.exports = repostCommand;
