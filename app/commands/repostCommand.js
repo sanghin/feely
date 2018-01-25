@@ -11,7 +11,6 @@ const repostCommand = {
     const hashedUrl = SHA256(input.content).toString();
 
     redisClient.get(hashedUrl, (err, reply) => {
-      console.log(err, reply);
       if (!reply) {
         // link is fresh or at least 12 hours old
         // save the hash and links meta in redis for 12 hours
