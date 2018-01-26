@@ -1,4 +1,5 @@
 const moment = require('moment-timezone');
+
 const IS_GET_VANCOUVER_TIME_REGEX = /!vanc/;
 
 const vancTimeCommand = {

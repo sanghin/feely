@@ -1,5 +1,5 @@
 const redisClient = require('../store/redisClient');
-const {PATH_TO_STATIC_FOLDER, TWELVE_HOURS, IS_URL_REGEX} = require('../utility/const');
+const { PATH_TO_STATIC_FOLDER, TWELVE_HOURS, IS_URL_REGEX } = require('../utility/const');
 const moment = require('moment');
 const SHA256 = require('crypto-js/sha256');
 
@@ -18,7 +18,7 @@ const repostCommand = {
           user: input.author.username,
           channel: input.channel.name,
           date: input.createdAt,
-          id: input.id
+          id: input.id,
         };
         redisClient.set(hashedUrl, JSON.stringify(data), 'EX', TWELVE_HOURS);
       }

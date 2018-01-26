@@ -1,4 +1,5 @@
 const moment = require('moment-timezone');
+
 const EST_CE_HEURE_PARIS_REGEX = /!par/;
 
 const commandeHeureParis = {

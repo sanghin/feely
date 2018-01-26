@@ -1,5 +1,5 @@
 const redisClient = require('../store/redisClient');
-const {IS_URL_REGEX} = require('../utility/const');
+const { IS_URL_REGEX } = require('../utility/const');
 const SHA256 = require('crypto-js/sha256');
 
 const deleteCommand = {

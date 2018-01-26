@@ -10,7 +10,7 @@ class Command {
   }
 
   addCommand(name, command) {
-    this.commands.push({name: name, obj: command});
+    this.commands.push({ name, obj: command });
   }
 
   handle(input, context) {
@@ -36,4 +36,4 @@ class Command {
 }
 
 const command = new Command();
-module.exports = {command};
+module.exports = { command };

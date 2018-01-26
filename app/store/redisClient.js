@@ -1,6 +1,6 @@
-const {REDIS_URL} = require('../utility/const');
+const { REDIS_URL } = require('../utility/const');
 
-const redisClientoptions = REDIS_URL ? {url: REDIS_URL} : {};
+const redisClientoptions = REDIS_URL ? { url: REDIS_URL } : {};
 const redis = require('redis').createClient(redisClientoptions);
 
 redis.on('connect', () => {
