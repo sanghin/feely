@@ -17,7 +17,7 @@ class Command {
     const availableCommands = this.commands.filter(command => command.obj.supports(input, context));
 
     if (availableCommands.length === 0) {
-      return;
+      return input.content;
     }
 
     return availableCommands[0].obj.process(input);

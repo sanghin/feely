@@ -3,11 +3,12 @@ const { PATH_TO_STATIC_FOLDER, TWELVE_HOURS, IS_URL_REGEX } = require('../utilit
 const moment = require('moment');
 const SHA256 = require('crypto-js/sha256');
 
-const repostCommand = {
-  supports(input, context) {
+class repostCommand {
+  static supports(input, context) {
     return input.content.match(IS_URL_REGEX) !== null && context === 'post';
-  },
-  process(input) {
+  }
+
+  static process(input) {
     const hashedUrl = SHA256(input.content).toString();
 
     redisClient.get(hashedUrl, (err, reply) => {
@@ -36,7 +37,7 @@ const repostCommand = {
         input.delete();
       }
     });
-  },
-};
+  }
+}
 
 module.exports = repostCommand;
