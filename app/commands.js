@@ -10,14 +10,14 @@ class Command {
   }
 
   addCommand(name, command) {
-    this.commands.push({name: name, obj: command});
+    this.commands.push({ name, obj: command });
   }
 
   handle(input, context) {
     const availableCommands = this.commands.filter(command => command.obj.supports(input, context));
 
     if (availableCommands.length === 0) {
-      return;
+      return input.content;
     }
 
     return availableCommands[0].obj.process(input);
@@ -36,4 +36,4 @@ class Command {
 }
 
 const command = new Command();
-module.exports = {command};
+module.exports = { command };

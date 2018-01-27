@@ -4,7 +4,7 @@ RUN npm install -g yarn --quiet
 
 WORKDIR /app
 
-ADD ./ /app
+COPY package.json .
 
 RUN yarn install
 

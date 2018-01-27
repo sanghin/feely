@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-const {command} = require('./commands');
-const {discordClient} = require('./client/discord');
+const { command } = require('./commands');
+const { discordClient } = require('./client/discord');
 
 /*
  * REAL MAGIC HAPPENS
