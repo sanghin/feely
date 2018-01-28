@@ -1,4 +1,4 @@
-FROM node
+FROM node:carbon
 
 RUN npm install -g yarn --quiet
 

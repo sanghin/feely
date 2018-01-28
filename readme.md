@@ -27,6 +27,12 @@ REDIS_URL=redis://redis:3679
 $ docker-compose up --build
 ```
 
+#### Troubleshooting
+```
+$ docker-compose build --no-cache feely
+$ docker-compose exec feely yarn install
+```
+
 ### 17 century setup
 Install Redis (https://redis.io/)
 

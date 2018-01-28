@@ -9,7 +9,10 @@
     "start": "node app/server.js"
   },
   "keywords": [
-    "sanghin"
+    "discord",
+    "discord-bot",
+    "nodejs",
+    "docker"
   ],
   "author": "sanghin",
   "contributors": [
