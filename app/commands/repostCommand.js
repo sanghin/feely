@@ -1,5 +1,5 @@
 const redisClient = require('../store/redisClient');
-const { PATH_TO_STATIC_FOLDER, TWELVE_HOURS, IS_URL_REGEX } = require('../utility/const');
+const { PATH_TO_STATIC_IMG_FOLDER, TWELVE_HOURS, IS_URL_REGEX } = require('../utility/const');
 const moment = require('moment');
 const SHA256 = require('crypto-js/sha256');
 
@@ -32,7 +32,7 @@ class repostCommand {
         const date = moment(new Date(data.date));
         const blameMessage = `${data.user} posted this in #${data.channel} on ${date.fromNow()}`;
         input.channel.send(blameMessage, {
-          file: `${PATH_TO_STATIC_FOLDER}/no_repost.jpg`,
+          file: `${PATH_TO_STATIC_IMG_FOLDER}/no_repost.jpg`,
         });
         input.delete();
       }
