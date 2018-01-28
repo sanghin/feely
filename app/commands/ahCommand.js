@@ -1,4 +1,4 @@
-const { PATH_TO_STATIC_FOLDER } = require('../utility/const');
+const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 
 const IS_AH_REGEX = /^\bah\b$/i;
 
@@ -8,7 +8,7 @@ class ahCommand {
   }
 
   static process(input) {
-    input.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/ah.png` });
+    input.channel.send('', { file: `${PATH_TO_STATIC_IMG_FOLDER}/ah.png` });
   }
 }
 

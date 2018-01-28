@@ -1,4 +1,4 @@
-FROM node:boron
+FROM node
 
 RUN npm install -g yarn --quiet
 

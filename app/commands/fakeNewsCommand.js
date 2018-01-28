@@ -1,4 +1,4 @@
-const { PATH_TO_STATIC_FOLDER } = require('../utility/const');
+const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 
 const IS_FAKE_NEWS_REGEX = /^fake((\s)?news)?$/gi;
 
@@ -10,7 +10,7 @@ class fakeNewsCommand {
   static process(input) {
     // will select randomly between fakenews_1.jpg and fakenews_2.jpg
     const image = ['fakenews_1', 'fakenews_2'][Math.round(Math.random())];
-    input.channel.send('', { file: `${PATH_TO_STATIC_FOLDER}/${image}.jpg` });
+    input.channel.send('', { file: `${PATH_TO_STATIC_IMG_FOLDER}/${image}.jpg` });
   }
 }
 
