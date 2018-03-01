@@ -1,12 +1,21 @@
 const moment = require('moment-timezone');
+const BaseCommand = require('../baseCommand');
 
 const EST_CE_HEURE_PARIS_REGEX = /!par/;
 
-class commandeHeureParis {
-  static supports(input) {
+class CommandeHeureParis extends BaseCommand {
+  constructor() {
+    super();
+    this.actionnable = true;
+    this.usage = '!par';
+    this.options = [{ parameters: ['-h', '--help'], description: 'display this help message' }];
+    this.help = 'Wanna know what time is it in Paris ?';
+  }
+
+  supports(input) {
     return input.content.match(EST_CE_HEURE_PARIS_REGEX) !== null;
   }
-  static process(input) {
+  process(input) {
     const heureDateParis = moment()
       .tz('Europe/Paris')
       .locale('fr')
@@ -14,5 +23,7 @@ class commandeHeureParis {
     input.channel.send(`:flag_fr: ${heureDateParis} :french_bread:`);
   }
 }
+
+const commandeHeureParis = new CommandeHeureParis();
 
 module.exports = commandeHeureParis;

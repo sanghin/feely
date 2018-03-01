@@ -22,3 +22,5 @@ discordClient.on('messageDelete', (message) => {
 
 
 process.on('SIGTERM', () => leaveVoice(discordClient));
+
+process.on('unhandledRejection', r => console.log(r));
