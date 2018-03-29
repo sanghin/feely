@@ -1,7 +1,7 @@
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 const BaseCommand = require('../baseCommand');
 
-const IS_INDEED_REGEX = /indeed/;
+const IS_INDEED_REGEX = /indeed/i;
 
 class TealcCommand extends BaseCommand {
   constructor() {
