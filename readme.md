@@ -27,6 +27,11 @@ REDIS_URL=redis://redis:3679
 $ docker-compose up --build
 ```
 
+If you want dependencies back to host :
+```
+$ docker run -v "$(pwd)":/app:Z feely_feely yarn install
+```
+
 #### Troubleshooting
 ```
 $ docker-compose build --no-cache feely
