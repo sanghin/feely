@@ -2,8 +2,6 @@ require('dotenv').config();
 
 const { command } = require('./commands');
 const { discordClient } = require('./client/discord');
-const { leaveVoice } = require('./utility/functions');
-
 /*
  * REAL MAGIC HAPPENS
  */
@@ -20,7 +18,5 @@ discordClient.on('messageDelete', (message) => {
   command.handle(message, 'delete');
 });
 
-
-process.on('SIGTERM', () => leaveVoice(discordClient));
-
-process.on('unhandledRejection', r => console.log(r));
+// eslint-disable-next-line no-console
+process.on('unhandledRejection', r => console.error(r));
