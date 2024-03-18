@@ -11,6 +11,7 @@ class ProjetCommand extends BaseCommand {
     this.options = [{ parameters: ['-h', '--help'], description: 'Display this help message' }];
     this.help = 'Invoke our dear Président.';
   }
+
   supports(input) {
     return input.content.match(IS_PROJET_REGEX) !== null;
   }

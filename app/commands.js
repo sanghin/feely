@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const PATH_TO_COMMAND_FOLDER = `${__dirname}/commands`;
+const PATH_TO_COMMAND_FOLDER = path.join(__dirname, 'commands');
 const IS_COMMAND_HELP = /.* (--help|-h)$/;
 const IS_HELP = /^!help$/;
 

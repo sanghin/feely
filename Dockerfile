@@ -1,9 +1,12 @@
-FROM node:10.16.3-jessie
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY package.json .
+COPY pnpm-lock.yaml
 
-RUN yarn install --frozen-lockfile --production
+RUN corepack enable pnpm
+
+RUN pnpm i --frozen-lockfile --production
 
 CMD ["yarn", "dev"]

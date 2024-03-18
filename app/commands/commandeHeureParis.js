@@ -1,4 +1,4 @@
-const moment = require('moment-timezone');
+const dayjs = require('dayjs');
 const BaseCommand = require('../baseCommand');
 
 const EST_CE_HEURE_PARIS_REGEX = /!par/;
@@ -15,8 +15,9 @@ class CommandeHeureParis extends BaseCommand {
   supports(input) {
     return input.content.match(EST_CE_HEURE_PARIS_REGEX) !== null;
   }
+
   process(input) {
-    const heureDateParis = moment()
+    const heureDateParis = dayjs()
       .tz('Europe/Paris')
       .locale('fr')
       .format('LT');

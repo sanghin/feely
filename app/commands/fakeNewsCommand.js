@@ -11,6 +11,7 @@ class FakeNewsCommand extends BaseCommand {
     this.options = [{ parameters: ['-h', '--help'], description: 'Display this help message' }];
     this.help = 'You don\'t want to spread false news, do you?';
   }
+
   supports(input) {
     return input.content.match(IS_FAKE_NEWS_REGEX) !== null;
   }

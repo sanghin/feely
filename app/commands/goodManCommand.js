@@ -12,6 +12,7 @@ class GoodManCommand extends BaseCommand {
     this.options = [{ parameters: ['-h', '--help'], description: 'Display this help message' }];
     this.help = 'Feels good man';
   }
+
   supports(input) {
     return input.content.match(IS_SO_GOOD_REGEX) !== null
       || input.content.match(IS_FEELS_GOOD_REGEX) !== null;

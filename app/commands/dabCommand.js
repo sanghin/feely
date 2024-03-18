@@ -11,6 +11,7 @@ class DabCommand extends BaseCommand {
     this.options = [{ parameters: ['-h', '--help'], description: 'Display this help message' }];
     this.help = 'Celebrate your victory with a mighty dab';
   }
+
   supports(input) {
     return input.content.match(IS_DAB_REGEX) !== null;
   }

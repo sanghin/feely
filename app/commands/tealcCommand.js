@@ -11,6 +11,7 @@ class TealcCommand extends BaseCommand {
     this.options = [{ parameters: ['-h', '--help'], description: 'Display this help message' }];
     this.help = 'My depth is immaterial to this conversation.';
   }
+
   supports(input) {
     return input.content.match(IS_INDEED_REGEX) !== null;
   }

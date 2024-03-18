@@ -1,8 +1,0 @@
-{
-  "extends": "airbnb",
-  "rules": {
-    "import/no-dynamic-require": 0,
-    "global-require": 0,
-    "class-methods-use-this": 0
-  }
-}
