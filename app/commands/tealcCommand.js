@@ -1,5 +1,6 @@
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 const BaseCommand = require('../baseCommand');
+const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
 
 const IS_INDEED_REGEX = /indeed/i;
 
@@ -12,12 +13,15 @@ class TealcCommand extends BaseCommand {
     this.help = 'My depth is immaterial to this conversation.';
   }
 
-  supports(input) {
-    return input.content.match(IS_INDEED_REGEX) !== null;
+  supports(message) {
+    return message.content.match(IS_INDEED_REGEX) !== null;
   }
 
-  process(input) {
-    input.channel.send('', { file: `${PATH_TO_STATIC_IMG_FOLDER}/indeed.gif` });
+  process(message) {
+    const attachment = new AttachmentBuilder(`${PATH_TO_STATIC_IMG_FOLDER}/indeed.gif`, 'indeed.gif')
+    const embed = new EmbedBuilder().setImage('attachment://indeed.gif')
+
+    message.channel.send({ embeds: [embed], files: [attachment] });
   }
 }
 

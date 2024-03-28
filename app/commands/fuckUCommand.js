@@ -1,5 +1,6 @@
 const BaseCommand = require('../baseCommand');
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
+const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
 
 const IS_FUCK_YOU_COMMAND = /!fu/;
 
@@ -12,12 +13,15 @@ class FuckUCommand extends BaseCommand {
     this.help = 'Go fuck yourself!';
   }
 
-  supports(input) {
-    return input.content.match(IS_FUCK_YOU_COMMAND) !== null;
+  supports(message) {
+    return message.content.match(IS_FUCK_YOU_COMMAND) !== null;
   }
 
-  process(input) {
-    input.channel.send('', { file: `${PATH_TO_STATIC_IMG_FOLDER}/fucku.gif` });
+  process(message) {
+    const attachment = new AttachmentBuilder(`${PATH_TO_STATIC_IMG_FOLDER}/fucku.gif`, 'fucku.gif')
+    const embed = new EmbedBuilder().setImage('attachment://fucku.gif')
+
+    message.channel.send({ embeds: [embed], files: [attachment] });
   }
 }
 

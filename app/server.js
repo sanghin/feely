@@ -1,24 +1,24 @@
-require('dotenv').config();
-
 const { command } = require('./commands');
+const { debug } = require('./utility/debug');
 const { discordClient } = require('./client/discord');
+const utc = require('dayjs/plugin/utc')
+const timezone = require('dayjs/plugin/timezone') 
 const dayjs = require('dayjs')
 
-const timezone = require('dayjs/plugin/timezone') 
-
+dayjs.extend(utc)
 dayjs.extend(timezone)
 
-discordClient.on('message', (message) => {
-  // do not need to react to somebody not alive, right ?
+function messageHandler(message) {  
   if (message.author.bot) {
     return;
   }
 
+  debug('messageHandler', message)
+  
   command.handle(message, 'post');
-});
+}
 
-discordClient.on('messageDelete', (message) => {
-  command.handle(message, 'delete');
-});
+discordClient.on('messageUpdate', (message) => { messageHandler(message)} );
+discordClient.on('messageCreate', (message) => { messageHandler(message) });
 
 process.on('unhandledRejection', r => console.error(r));

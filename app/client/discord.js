@@ -1,13 +1,11 @@
-const Discord = require('discord.js');
+const { GatewayIntentBits, Client } = require('discord.js');
 const { DISCORD_TOKEN } = require('../utility/const');
 
-
-const discordClient = new Discord.Client();
+const discordClient = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
 
 discordClient.login(DISCORD_TOKEN);
 
 discordClient.on('ready', () => {
-  // eslint-disable-next-line no-console
   console.log('DISCORD OK');
 });
 

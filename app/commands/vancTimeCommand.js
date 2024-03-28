@@ -20,7 +20,7 @@ class VancTimeCommand extends BaseCommand {
     const vancouverDateTime = dayjs()
       .tz('America/Vancouver')
       .locale('fr')
-      .format('LT');
+      .format('HH:mm');
     input.channel.send(`:flag_ca: ${vancouverDateTime} :maple_leaf:`);
   }
 }

@@ -15,23 +15,25 @@ class Command {
     this.commands.push({ name, obj: command });
   }
 
-  handle(input, context) {
-    if (input.content.match(IS_HELP) !== null) {
-      return this.sendCommandsList(input);
+  handle(message) {
+    const messageContent = message?.reactions?.message?.content ?? message.content
+
+    if (messageContent.match(IS_HELP) !== null) {
+      return this.sendCommandsList(message);
     }
 
-    const availableCommands = this.commands.filter(command => command.obj.supports(input, context));
+    const availableCommands = this.commands.filter(command => command.obj.supports(message));
 
     if (availableCommands.length === 0) {
-      return input.content;
+      return messageContent;
     }
 
-    const match = input.content.match(IS_COMMAND_HELP);
+    const match = messageContent.match(IS_COMMAND_HELP);
     if (match && match[1]) {
-      return availableCommands[0].obj.getHelp(input);
+      return availableCommands[0].obj.getHelp(message);
     }
 
-    return availableCommands[0].obj.process(input);
+    return availableCommands[0].obj.process(message);
   }
 
   load() {

@@ -20,7 +20,7 @@ class CommandeHeureParis extends BaseCommand {
     const heureDateParis = dayjs()
       .tz('Europe/Paris')
       .locale('fr')
-      .format('LT');
+      .format('HH:mm');
     input.channel.send(`:flag_fr: ${heureDateParis} :french_bread:`);
   }
 }

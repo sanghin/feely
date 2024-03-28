@@ -1,5 +1,6 @@
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 const BaseCommand = require('../baseCommand');
+const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
 
 const IS_PROJET_REGEX = /^\bprojet\b/i;
 
@@ -12,12 +13,15 @@ class ProjetCommand extends BaseCommand {
     this.help = 'Invoke our dear Président.';
   }
 
-  supports(input) {
-    return input.content.match(IS_PROJET_REGEX) !== null;
+  supports(message) {
+    return message.content.match(IS_PROJET_REGEX) !== null;
   }
 
-  process(input) {
-    input.channel.send('', { file: `${PATH_TO_STATIC_IMG_FOLDER}/projet.gif` });
+  process(message) {
+    const attachment = new AttachmentBuilder(`${PATH_TO_STATIC_IMG_FOLDER}/projet.gif`, 'projet.gif')
+    const embed = new EmbedBuilder().setImage('attachment://projet.gif')
+
+    message.channel.send({ embeds: [embed], files: [attachment] });
   }
 }
 

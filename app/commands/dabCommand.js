@@ -1,5 +1,6 @@
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 const BaseCommand = require('../baseCommand');
+const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
 
 const IS_DAB_REGEX = /^\bdab\b/i;
 
@@ -12,12 +13,15 @@ class DabCommand extends BaseCommand {
     this.help = 'Celebrate your victory with a mighty dab';
   }
 
-  supports(input) {
-    return input.content.match(IS_DAB_REGEX) !== null;
+  supports(message) {
+    return message.content.match(IS_DAB_REGEX) !== null;
   }
 
-  process(input) {
-    input.channel.send('', { file: `${PATH_TO_STATIC_IMG_FOLDER}/dab.gif` });
+  process(message) {
+    const attachment = new AttachmentBuilder(`${PATH_TO_STATIC_IMG_FOLDER}/dab.gif`, 'dab.gif')
+    const embed = new EmbedBuilder().setImage('attachment://dab.gif')
+
+    message.channel.send({ embeds: [embed], files: [attachment] });
   }
 }
 
