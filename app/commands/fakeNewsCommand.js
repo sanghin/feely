@@ -1,5 +1,5 @@
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
-const BaseCommand = require('../baseCommand');
+const BaseCommand = require('./baseCommand');
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
 
 const IS_FAKE_NEWS_REGEX = /^fake((\s)?news)?/gi;

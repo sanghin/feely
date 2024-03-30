@@ -39,6 +39,7 @@ class Command {
   load() {
     const files = fs.readdirSync(PATH_TO_COMMAND_FOLDER);
     files.forEach((file) => {
+      if (file === 'baseCommand.js') return;
       this.addCommand(file, require(path.join(PATH_TO_COMMAND_FOLDER, file)));
     });
   }

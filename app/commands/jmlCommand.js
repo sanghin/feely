@@ -1,4 +1,4 @@
-const BaseCommand = require('../baseCommand');
+const BaseCommand = require('./baseCommand');
 const { PATH_TO_STATIC_IMG_FOLDER } = require('../utility/const');
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
 
