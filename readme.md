@@ -1,73 +1,36 @@
-### About
+# Feely Discord Bot
 
-This is a little bot for Discord.
+Feely is a Discord bot that detects the usage of famous phrases and reacts accordingly.
+It's a fun and interactive bot that adds a touch of humor to your Discord server, best suited for French audience.
 
 ## Features
 
-- Detect links submitted more than once in the past 12 hours and replace it if posted again by an image
-- Detect the usage of the famous ["ah"](https://www.youtube.com/watch?v=XE6YaLtctcI)
-- Detect the usage of the famous "N'est ce pas"
-- And many more
+- Detects the usage of the famous phrase ["ah"](https://www.youtube.com/watch?v=XE6YaLtctcI)
+- Detects the usage of the famous phrase "N'est ce pas"
+- And many more exciting features!
 
-### Local development setup
+## Local Development Setup
 
-- [install Docker](https://docs.docker.com/engine/installation/)
-- clone the repo.
-- setup environment variable `.env` file :
-```
-$ cp .env-example .env
-```
-```
-DISCORD_TOKEN=%discordToken%
-REDIS_URL=redis://redis:3679
-```
+To set up Feely for local development, follow these steps:
 
-- run the containers:
-```
-$ docker-compose up --build
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/download) (>= 20.x)
+- [pnpm](https://pnpm.io/installation)
+
+### Clone the Repository
+```sh
+git clone https://github.com/sanghin/feely.git
 ```
 
-If you want dependencies back to host :
-```
-$ docker run -v "$(pwd)":/app:Z feely_feely yarn install
-```
-
-#### Troubleshooting
-```
-$ docker-compose build --no-cache feely
-$ docker-compose exec feely yarn install
+### Install
+```sh
+cd feely
+pnpm install
+cp .env.example .env
 ```
 
-### 17 century setup
-Install Redis (https://redis.io/)
-
-Clone and install project dependencies:
-
-```
-$ git clone https://github.com/sanghin/feely.git
-$ cd feely
-$npm install
-```
-
-Setup environment variable:
-
-```
-export DISCORD_TOKEN=%discordToken%
-export REDIS_URL=redis://localhost:6379
-export PORT=3000
-```
-
-Port might change depending on what you setup for your environment.
-To find out you can do `redis-cli` in your terminal to find out:
-```
-$ redis-cli
-127.0.0.1:3679
-```
-
-Which will gives you host and port.
-
-And then :
-
-```
-$ node server.js
+### Start the server
+```sh
+pnpm dev
 ```
