@@ -1,4 +1,4 @@
-const HelpMessage = require('./utility/helpMessage');
+const HelpMessage = require('../utility/helpMessage');
 
 class BaseCommand {
   constructor() {
@@ -9,6 +9,11 @@ class BaseCommand {
     const helpMessage = new HelpMessage(this.usage, this.options, this.help);
 
     input.channel.send(helpMessage.output());
+  }
+
+
+  supports(message) {
+    return false;
   }
 }
 
