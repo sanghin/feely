@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "standard", "prettier"
+  ],
+  "plugins": ["promise", "n", "import", "prettier"],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "import/no-dynamic-require": 0,
+    "global-require": 0,
+    "class-methods-use-this": 0
+  }
+}
