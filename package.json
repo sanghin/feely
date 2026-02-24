@@ -5,6 +5,7 @@
   "main": "app/server.js",
   "scripts": {
     "test": "vitest",
+    "build": "tsc",
     "dev": "nodemon app/server.ts",
     "lint:fix": "eslint . --fix"
   },
@@ -36,14 +37,14 @@
     "nodemon": "^3.1.14",
     "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
     "vitest": "^4.0.18"
   },
   "dependencies": {
     "@eslint/eslintrc": "^3.3.4",
     "dayjs": "^1.11.19",
     "discord.js": "^14.25.1",
-    "dotenv": "^17.3.1"
+    "dotenv": "^17.3.1",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=24"

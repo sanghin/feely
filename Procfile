@@ -1,1 +1,1 @@
-worker: node --experimental-strip-types app/server.ts
+worker: node ./dist/server.js

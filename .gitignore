@@ -27,5 +27,8 @@ node_modules
 # app config file
 .env
 
+# compiled output
+dist
+
 # macos
 .DS_Store
