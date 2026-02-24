@@ -6,7 +6,6 @@
   "scripts": {
     "test": "vitest",
     "dev": "nodemon app/server.ts",
-    "start": "node --experimental-strip-types app/server.js",
     "lint:fix": "eslint . --fix"
   },
   "keywords": [
