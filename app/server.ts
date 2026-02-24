@@ -22,14 +22,20 @@ discordClient.on('ready', async () => {
 })
 
 const redditRegex = /https?:\/\/(www\.)?reddit\.com\/\S+/gi
+const instagramRegex = /https?:\/\/(www\.)?instagram\.com\/\S+/gi
 
 async function betterEmbedMedium(message: Message) {
   if (message.author.bot) return
-  const matches = message.content.match(redditRegex)
-  console.log('%capp/server.ts:29 object', 'color: #007acc;', matches);
-  if (!matches) return
 
-  const fixedLinks = matches.map((link) => link.replace(/reddit\.com/i, 'vxreddit.com'))
+  const redditMatches = message.content.match(redditRegex) ?? []
+  const instagramMatches = message.content.match(instagramRegex) ?? []
+
+  if (redditMatches.length === 0 && instagramMatches.length === 0) return
+
+  const fixedReddit = redditMatches.map((link) => link.replace(/reddit\.com/i, 'vxreddit.com'))
+  const fixedInstagram = instagramMatches.map((link) => link.replace(/instagram\.com/i, 'vxinstagram.com'))
+  const fixedLinks = [...fixedReddit, ...fixedInstagram]
+
   await message.reply(fixedLinks.join('\n'))
   await message.delete()
 }
