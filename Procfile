@@ -1,1 +1,1 @@
-worker: cd app && node server.js
+worker: node --experimental-strip-types app/server.js
